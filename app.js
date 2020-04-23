@@ -125,6 +125,15 @@ app.post('/login', (req, res, next) => {
     })
 })
 
+app.get('/session-id', (req, res, next) => {
+    log('server/session-id...')
+	let id = '1rwbeKKw1'
+	let token = jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: 3600 })
+	return res.status(200).json({
+		token: token
+	})
+})
+
 app.get('/logout', function (req, res) {
     log('server/logout...')
     res.status(200).json({
