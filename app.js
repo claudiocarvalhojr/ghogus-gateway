@@ -69,18 +69,38 @@ app.get('/users', verifyJWT, (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
+app.get('/cart/:search', (req, res, next) => {
+    log('server/cart...')
+    apiServiceProxy(req, res, next)
+})
+
+app.get('/cart/last', (req, res, next) => {
+    log('server/cart/last...')
+    apiServiceProxy(req, res, next)
+})
+
+app.post('/cart', (req, res, next) => {
+    log('server/cart/post...')
+    apiServiceProxy(req, res, next)
+})
+
 app.get('/products', (req, res, next) => {
     log('server/products...')
     apiServiceProxy(req, res, next)
 })
 
-app.get('/product/:id', (req, res, next) => {
-    log('server/product...')
+app.get('/products/:id', (req, res, next) => {
+    log('server/products/:id...')
+    apiServiceProxy(req, res, next)
+})
+
+app.get('/product/:search', (req, res, next) => {
+    log('server/product/:search...')
     apiServiceProxy(req, res, next)
 })
 
 app.post('/products', verifyJWT, (req, res, next) => {
-    log('server/products...')
+    log('server/products/post...')
     apiServiceProxy(req, res, next)
 })
 
@@ -89,13 +109,13 @@ app.get('/images', verifyJWT, (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.post('/images', verifyJWT, (req, res, next) => {
-    log('server/post images...')
+app.get('/images/last', verifyJWT, (req, res, next) => {
+    log('server/images/last...')
     apiServiceProxy(req, res, next)
 })
 
-app.get('/images/last', verifyJWT, (req, res, next) => {
-    log('server/get last images...')
+app.post('/images', verifyJWT, (req, res, next) => {
+    log('server/images/post...')
     apiServiceProxy(req, res, next)
 })
 
