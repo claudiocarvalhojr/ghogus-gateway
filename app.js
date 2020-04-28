@@ -84,6 +84,16 @@ app.post('/cart', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
+app.put('/cart/:id', (req, res, next) => {
+    log('server/cart/put...')
+    apiServiceProxy(req, res, next)
+})
+
+app.patch('/cart/:id', (req, res, next) => {
+    log('server/cart/patch...')
+    apiServiceProxy(req, res, next)
+})
+
 app.get('/products', (req, res, next) => {
     log('server/products...')
     apiServiceProxy(req, res, next)
