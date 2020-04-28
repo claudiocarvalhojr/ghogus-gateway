@@ -55,82 +55,92 @@ function log(message) {
 app.get('/user', verifyJWT, (req, res, next) => {
 //    let id = req.query.id
 //   console.log('\nID: ' + id + '\n')
-    log('server/user...')
+    log('get/user...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/customers', verifyJWT, (req, res, next) => {
-    log('server/customers...')
+    log('get/customers...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/users', verifyJWT, (req, res, next) => {
-    log('server/users...')
+    log('get/users...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/cart/:search', (req, res, next) => {
-    log('server/cart...')
+    log('get/cart/:search...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/cart/last', (req, res, next) => {
-    log('server/cart/last...')
+    log('get/cart/last...')
     apiServiceProxy(req, res, next)
 })
 
 app.post('/cart', (req, res, next) => {
-    log('server/cart/post...')
+    log('post/cart...')
     apiServiceProxy(req, res, next)
 })
 
 app.put('/cart/:id', (req, res, next) => {
-    log('server/cart/put...')
+    log('put/cart...')
     apiServiceProxy(req, res, next)
 })
 
-app.patch('/cart/:id', (req, res, next) => {
-    log('server/cart/patch...')
+app.patch('/cart/set/:id', (req, res, next) => {
+    log('patch/cart/set/:id...')
+    apiServiceProxy(req, res, next)
+})
+
+app.patch('/cart/push/:id', (req, res, next) => {
+    log('patch/cart/push/:id...')
+    apiServiceProxy(req, res, next)
+})
+
+app.delete('/cart/pull/:id', (req, res, next) => {
+    log('delete/cart/pull/:id...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/products', (req, res, next) => {
-    log('server/products...')
+    log('get/products...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/products/:id', (req, res, next) => {
-    log('server/products/:id...')
+    log('get/products/:id...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/product/:search', (req, res, next) => {
-    log('server/product/:search...')
+    log('get/product/:search...')
     apiServiceProxy(req, res, next)
 })
 
 app.post('/products', verifyJWT, (req, res, next) => {
-    log('server/products/post...')
+    log('post/products...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/images', verifyJWT, (req, res, next) => {
-    log('server/images...')
+    log('get/images...')
     apiServiceProxy(req, res, next)
 })
 
 app.get('/images/last', verifyJWT, (req, res, next) => {
-    log('server/images/last...')
+    log('get/images/last...')
     apiServiceProxy(req, res, next)
 })
 
 app.post('/images', verifyJWT, (req, res, next) => {
-    log('server/images/post...')
+    log('post/images...')
     apiServiceProxy(req, res, next)
 })
 
 app.post('/login', (req, res, next) => {
-    log('server/login...')
+    log('post/login...')
     User.findOne({ _id: req.body.id, email: req.body.email }, (err, doc) => {
         if (err)
             return res.status(500).json({
@@ -156,7 +166,7 @@ app.post('/login', (req, res, next) => {
 })
 
 app.get('/session-id', (req, res, next) => {
-    log('server/session-id...')
+    log('get/session-id...')
 	let id = '1rwbeKKw1'
 	let token = jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: 3600 })
 	return res.status(200).json({
@@ -165,7 +175,7 @@ app.get('/session-id', (req, res, next) => {
 })
 
 app.get('/logout', function (req, res) {
-    log('server/logout...')
+    log('get/logout...')
     res.status(200).json({
         auth: false,
         message: 'Logout OK',
@@ -174,7 +184,7 @@ app.get('/logout', function (req, res) {
 })
 
 app.get('/check', verifyJWT, (req, res, next) => {
-    log('server/check...')
+    log('get/check...')
     res.status(200).json({
         auth: true,
         message: 'Check OK'
@@ -182,7 +192,7 @@ app.get('/check', verifyJWT, (req, res, next) => {
 })
 
 function verifyJWT(req, res, next) {
-    log('server/verifyJWT...')
+    log('verifyJWT...')
     let token = req.query.token || req.body.token || req.headers['x-access-token']
     if (!token) return res.status(401).json({
         auth: false,
