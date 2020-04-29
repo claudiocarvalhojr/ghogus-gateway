@@ -99,8 +99,8 @@ app.patch('/cart/push/:id', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.delete('/cart/pull/:id', (req, res, next) => {
-    log('delete/cart/pull/:id...')
+app.patch('/cart/pull/:id', (req, res, next) => {
+    log('patch/cart/pull/:id...')
     apiServiceProxy(req, res, next)
 })
 
