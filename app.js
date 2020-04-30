@@ -69,8 +69,13 @@ app.get('/users', verifyJWT, (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.get('/cart/:search', (req, res, next) => {
-    log('get/cart/:search...')
+app.get('/cart/:id', (req, res, next) => {
+    log('get/cart/:id...')
+    apiServiceProxy(req, res, next)
+})
+
+app.get('/cart/search/:search', (req, res, next) => {
+    log('get/cart/search/:search...')
     apiServiceProxy(req, res, next)
 })
 
