@@ -94,13 +94,18 @@ app.put('/cart/:id', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.patch('/cart/set/:id', (req, res, next) => {
-    log('patch/cart/set/:id...')
+app.patch('/cart/:id', (req, res, next) => {
+    log('patch/cart/:id...')
     apiServiceProxy(req, res, next)
 })
 
 app.patch('/cart/push/:id', (req, res, next) => {
     log('patch/cart/push/:id...')
+    apiServiceProxy(req, res, next)
+})
+
+app.patch('/cart/set/:id', (req, res, next) => {
+    log('patch/cart/set/:id...')
     apiServiceProxy(req, res, next)
 })
 
