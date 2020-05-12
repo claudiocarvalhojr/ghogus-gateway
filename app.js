@@ -79,8 +79,8 @@ app.get('/cart/search/:search', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.get('/cart/last', (req, res, next) => {
-    log('get/cart/last...')
+app.get('/cart/last/:search', (req, res, next) => {
+    log('get/cart/last/:search...')
     apiServiceProxy(req, res, next)
 })
 
@@ -124,12 +124,17 @@ app.get('/products/:id', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.get('/product/:search', (req, res, next) => {
-    log('get/product/:search...')
+app.get('/product/sku/:sku', (req, res, next) => {
+    log('get/product/sku/:sku...')
     apiServiceProxy(req, res, next)
 })
 
-app.post('/products', verifyJWT, (req, res, next) => {
+app.get('/product/search/:search', (req, res, next) => {
+    log('get/product/search/:search...')
+    apiServiceProxy(req, res, next)
+})
+
+app.post('/product', verifyJWT, (req, res, next) => {
     log('post/products...')
     apiServiceProxy(req, res, next)
 })
@@ -179,9 +184,9 @@ app.get('/session-id', (req, res, next) => {
     log('get/session-id...')
 	let id = '1rwbeKKw1'
 	let token = jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: 3600 })
-	return res.status(200).json({
-		token: token
-	})
+	return res.status(200).json(
+		{ token: token }
+	)
 })
 
 app.get('/logout', function (req, res) {
