@@ -79,7 +79,7 @@ app.get('/cart/search/:search', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
-app.get('/cart/last/:search', (req, res, next) => {
+app.get('/cart/last/:search', (req, res, next) => { 
     log('get/cart/last/:search...')
     apiServiceProxy(req, res, next)
 })
