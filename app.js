@@ -99,6 +99,11 @@ app.patch('/cart/:id', (req, res, next) => {
     apiServiceProxy(req, res, next)
 })
 
+app.patch('/cart/many/:id', (req, res, next) => {
+    log('patch/cart/many/:id...')
+    apiServiceProxy(req, res, next)
+})
+
 app.patch('/cart/push/:id', (req, res, next) => {
     log('patch/cart/push/:id...')
     apiServiceProxy(req, res, next)
